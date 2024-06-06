@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Locator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        input, button, select {
+            margin: 5px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #preferencesCount, #userNames {
+            text-align: center;
+            margin-top: 20px;
+        }
+        #logo {
+            display: block;
+            margin: 0 auto 20px auto;
+            max-width: 100px;
+        }
+        #winnerAnnouncement {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff5722;
+            animation: fadeIn 2s;
+            visibility: hidden;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <img id="logo" src="logo.webp" alt="Logo">
+    <h1>Food Locator</h1>
+    <form id="preferencesForm">
+        <input type="text" id="userName" placeholder="Your Name">
+        <input type="text" id="restaurantInput" placeholder="Cuisine Type or Restaurant Name">
+        <label for="minPrice">Min Price:</label>
+        <select id="minPrice">
+            <option value="$">$</option>
+            <option value="$$">$$</option>
+            <option value="$$$">$$$</option>
+            <option value="$$$$">$$$$</option>
+        </select>
+        <label for="maxPrice">Max Price:</label>
+        <select id="maxPrice">
+            <option value="$">$</option>
+            <option value="$$">$$</option>
+            <option value="$$$">$$$</option>
+            <option value="$$$$" selected>$$$$</option>
+        </select>
+        <input type="text" id="distance" placeholder="Distance (km)">
+        <button type="button" onclick="addUserInput()">Submit</button>
+        <button type="button" onclick="findBestRestaurant()">Find Best Restaurant</button>
+        <button type="button" onclick="resetPreferences()">Reset Preferences</button>
+    </form>
+    <div id="preferencesCount">Preferences Submitted: 0</div>
+    <div id="userNames">Users: </div>
+    <div id="winnerAnnouncement">Winner Winner, Chicken Dinner, <span id="winnerName"></span> has won!</div>
+    <script src="script.js"></script>
+</body>
+</html>
